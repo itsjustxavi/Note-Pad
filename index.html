@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+
+      
+            
+<style>
+
+body{
+    background-color: red;
+}
+
+li{
+    cursor: pointer;
+}
+</style>
+    <title>Note Pad</title>
+</head>
+<body>
+    <div align="center">
+    <h1>Note Pad</h1>
+
+    <div class="input-group mb-3">
+        <input id="userInput" type="text" class="form-control" placeholder="Add a Task" aria-label="Write your new task here" aria-describedby="basic-addon2">
+        <span class="input-group-text" id="submitButton">Add Task</span>
+      </div>
+
+    </div>
+
+    <div>
+        <ul id="toDoList">
+            
+
+        </ul>
+    </div>
+    
+
+<script>
+
+    const input = document.getElementById('userInput');
+    const submitButton = document.getElementById('submitButton')
+    const toDoList = document.getElementById('toDoList')
+    console.log(input);
+
+    submitButton.addEventListener('click', addTask);
+
+
+    function addTask(){
+
+
+        if(!input.value){
+    return;
+}
+    console.log(toDoList.getElementsByTagName('li'));
+        console.log(input.value);
+
+        const newListItem = document.createElement('li');
+        newListItem.appendChild(document.createTextNode(input.value));
+        newListItem.classList.add('toggle');
+        toDoList.appendChild(newListItem);
+
+        input.value = "";
+
+       const listArray = [].slice.call(toDoList.getElementsByTagName('li'));
+    }
+
+
+document.addEventListener('click', function(event){
+    let item = event.target;
+    if(item.classList.contains('toggle')){
+        if(item.style.textDecoration == ""){
+            item.style.textDecoration = "line-through";
+        } else{
+            item.style.textDecoration = "";
+        }
+
+    };
+    
+    
+});
+
+
+
+</script>
+
+
+    
+</body>
+</html>
